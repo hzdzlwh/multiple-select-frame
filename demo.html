@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<script type="text/javascript" src="jquery.min.js"></script>
+<title></title>
+<style>
+*{margin: 0;padding: 0;}
+li{list-style: none;}
+.multiselect {display: inline-block;}
+.select {width: 100px; height: 28px; line-height: 28px; border: 1px solid #000; background: url(dot.png) no-repeat right center;}
+.select-box {min-width: 88px; padding: 0 6px; border: 1px solid #000; display: none;}
+
+</style>
+<script type="text/javascript">
+$(function(){
+	$('.multiselect .select').click(function(){
+		if($(this).hasClass('active')){
+			$(this).next('.select-box').hide();
+			$(this).removeClass('active');
+		}else{
+			$(this).next('.select-box').show();
+			$(this).addClass('active');
+		}
+	});
+
+	$('#btn1').on('click',function(){
+		console.log($('#form1').serialize());
+	});
+
+	$('.select-all').click(function() {
+		
+		//$(this).parent().prev().find(':checkbox').attr('checked','checked');
+		$(this).parent().prev().find(':checkbox').prop('checked',true);  //虽然attr（）和prop（）方法都能实现，最好用prop
+
+		$(this).parents('.select-box').hide();
+	});
+
+	$('.select-none').click(function() {
+		
+		//$(this).parent().prev().find(':checkbox').attr('checked','checked');
+		$(this).parent().prev().find(':checkbox').prop('checked',false);  //虽然attr（）和prop（）方法都能实现，最好用prop
+
+		$(this).parents('.select-box').hide();
+	});
+})
+</script>
+</head>
+<body>
+<form action="" id="form1">
+<div class="multiselect">
+	<div class="select">请选择</div>
+	<div class="select-box">
+		<ul>
+			<li><input type="checkbox" name="project" value="a" id="project1"><label for="project1">项目a</label></li>
+			<li><input type="checkbox" name="project" value="b" id="project2"><label for="project2">项目b</label></li>
+			<li><input type="checkbox" name="project" value="c" id="project3"><label for="project3">项目c</label></li>
+		</ul>
+		<div class="action">
+			<input type="button" class="select-all" value="全选">
+			<input type="button" class="select-none" value="全不选">
+		</div>
+	</div>
+</div>
+<input type="button" id="btn1" value="提交">
+</form>
+</body>
+</html>
