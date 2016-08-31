@@ -31,7 +31,7 @@ $(function(){
 	$('.select-all').click(function() {
 		
 		//$(this).parent().prev().find(':checkbox').attr('checked','checked');
-		$(this).parent().prev().find(':checkbox').prop('checked',true);  //虽然attr（）和prop（）方法都能实现，最好用prop
+		$(this).parent().prev().find(':checkbox').prop('checked',true);  
 
 		$(this).parents('.select-box').hide();
 	});
@@ -39,7 +39,7 @@ $(function(){
 	$('.select-none').click(function() {
 		
 		//$(this).parent().prev().find(':checkbox').attr('checked','checked');
-		$(this).parent().prev().find(':checkbox').prop('checked',false);  //虽然attr（）和prop（）方法都能实现，最好用prop
+		$(this).parent().prev().find(':checkbox').prop('checked',false);  
 
 		$(this).parents('.select-box').hide();
 	});
